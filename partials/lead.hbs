@@ -1,0 +1,13 @@
+<section class="lead wrap{{#unless feature_image}} no-img{{/unless}}" aria-labelledby="lead-t">
+    {{#if feature_image}}
+        <a class="lead-img print" href="{{url}}" tabindex="-1" aria-hidden="true">
+            <div class="duo"><img src="{{img_url feature_image size="l"}}" alt="" data-duo></div>
+        </a>
+    {{/if}}
+    <div class="lead-text">
+        <div class="pills"><span class="pill is-or">Latest</span><span class="pill">{{date format="MMM D, YYYY"}}</span></div>
+        <h2 class="lead-t" id="lead-t"><a href="{{url}}"><span class="mis" data-text="{{title}}" data-detect-lang>{{title}}</span></a></h2>
+        <p class="lead-x" data-detect-lang>{{excerpt characters="220"}}</p>
+        <div class="lead-act"><a class="btn" href="{{url}}">Read it <span aria-hidden="true">→</span></a><span class="lead-m">{{reading_time minute="1 min" minutes="% min"}}</span></div>
+    </div>
+</section>

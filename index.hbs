@@ -1,0 +1,34 @@
+{{!< default}}
+{{#is "home"}}
+    <section class="hero wrap{{#unless @site.cover_image}} hero-plain{{/unless}}" aria-label="{{@site.title}}">
+        {{#if @site.cover_image}}<div class="duo hero-img"><img src="{{img_url @site.cover_image size="xl"}}" alt="" data-duo="deep" fetchpriority="high"></div>{{/if}}
+        <span class="crop crop-tl" aria-hidden="true"></span><span class="crop crop-br" aria-hidden="true"></span>
+        <div class="hero-in">
+            <h1 class="sr-only">{{@site.title}}</h1>
+            {{#if @site.description}}
+                <p class="quote" data-detect-lang data-quote>{{@site.description}}</p>
+                <p class="hero-cap">{{@site.title}}{{#if @custom.hero_credit}} — {{@custom.hero_credit}}{{/if}}</p>
+            {{else}}
+                {{!-- Without a description, the title is printed large. --}}
+                <p class="quote" data-detect-lang data-quote>{{@site.title}}</p>
+                {{#if @custom.hero_credit}}<p class="hero-cap">{{@custom.hero_credit}}</p>{{/if}}
+            {{/if}}
+        </div>
+    </section>
+    {{#foreach posts limit="1"}}{{> lead}}{{/foreach}}
+    <section class="index wrap" aria-labelledby="index-h">
+        <div class="index-head"><h2 id="index-h">All writing</h2><span class="pill">{{pagination.total}}</span><span class="index-rule" aria-hidden="true"></span></div>
+        <ol class="rows" role="list" data-total="{{pagination.total}}" data-page="{{pagination.page}}" data-limit="{{pagination.limit}}" data-skip="1">
+            {{#foreach posts from="2"}}{{> row}}{{/foreach}}
+        </ol>
+        {{pagination}}
+    </section>
+{{else}}
+    <section class="index wrap" aria-labelledby="index-h">
+        <div class="index-head"><h2 id="index-h">All writing · page {{pagination.page}}</h2><span class="index-rule" aria-hidden="true"></span></div>
+        <ol class="rows" role="list" data-total="{{pagination.total}}" data-page="{{pagination.page}}" data-limit="{{pagination.limit}}" data-skip="0">
+            {{#foreach posts}}{{> row}}{{/foreach}}
+        </ol>
+        {{pagination}}
+    </section>
+{{/is}}

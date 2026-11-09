@@ -1,0 +1,90 @@
+{
+  "name": "riso-press",
+  "description": "A Ghost theme printed in two inks: risograph duotone photos, misregistered titles, crop marks, and posts that switch between 中文 and English.",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": {
+    "name": "Zepto Zhou",
+    "email": "xgzepto@gmail.com",
+    "url": "https://zepto.page"
+  },
+  "homepage": "https://github.com/XGZepto/riso-press#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XGZepto/riso-press.git"
+  },
+  "bugs": {
+    "url": "https://github.com/XGZepto/riso-press/issues"
+  },
+  "engines": {
+    "ghost": ">=6.0.0"
+  },
+  "keywords": [
+    "ghost-theme",
+    "ghost",
+    "theme",
+    "blog",
+    "bilingual",
+    "chinese"
+  ],
+  "screenshots": {
+    "desktop": "assets/screenshot-desktop.jpg",
+    "mobile": "assets/screenshot-mobile.jpg"
+  },
+  "config": {
+    "posts_per_page": 16,
+    "image_sizes": {
+      "s": {
+        "width": 480
+      },
+      "m": {
+        "width": 800
+      },
+      "l": {
+        "width": 1200
+      },
+      "xl": {
+        "width": 1600
+      },
+      "xxl": {
+        "width": 2400
+      }
+    },
+    "card_assets": true,
+    "custom": {
+      "first_ink": {
+        "type": "color",
+        "default": "#2F4DA0",
+        "description": "Prints the text, rules and the shadows of every photo."
+      },
+      "second_ink": {
+        "type": "color",
+        "default": "#F15A24",
+        "description": "Prints the offset outlines, drop caps, numbers and accents."
+      },
+      "hero_credit": {
+        "type": "text",
+        "default": "",
+        "group": "homepage"
+      },
+      "default_language": {
+        "type": "select",
+        "options": [
+          "Reader's browser",
+          "中文",
+          "English"
+        ],
+        "default": "Reader's browser",
+        "group": "post",
+        "description": "Which half a #bilingual post opens on."
+      }
+    }
+  },
+  "scripts": {
+    "test": "gscan .",
+    "zip": "node scripts/zip.mjs"
+  },
+  "devDependencies": {
+    "gscan": "^6.7.0"
+  }
+}

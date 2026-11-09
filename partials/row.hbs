@@ -1,0 +1,13 @@
+<li>
+    <a class="row" href="{{url}}">
+        <span class="no" data-n aria-hidden="true"></span>
+        <span class="row-main">
+            <span class="row-t" data-detect-lang>{{title}}</span>
+            <span class="row-x" data-detect-lang>{{excerpt characters="180"}}</span>
+        </span>
+        <span class="row-meta">
+            <span>{{date format="MMM D, YYYY"}}</span>
+            <span>{{reading_time minute="1 min" minutes="% min"}} · {{#has tag="#bilingual"}}<b>雙語</b>{{else}}<span data-lang-label>EN</span>{{/has}}</span>
+        </span>
+    </a>
+</li>

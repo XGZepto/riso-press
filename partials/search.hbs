@@ -1,0 +1,16 @@
+{{!-- Search: a printed index sheet. Filled in by main.js. --}}
+<div class="search" data-search-panel hidden>
+    <div class="search-backdrop" data-search-close></div>
+    <section class="search-box" role="dialog" aria-modal="true" aria-labelledby="search-label">
+        <div class="search-top">
+            <h2 class="search-h" id="search-label">Index</h2>
+            <button type="button" class="pill" data-search-close>Close</button>
+        </div>
+        <form class="search-line" data-search-form>
+            <label class="sr-only" for="search-input">Search the archive</label>
+            <input id="search-input" type="search" placeholder="Search the archive · 搜尋" autocomplete="off" autocapitalize="off" spellcheck="false" role="combobox" aria-controls="search-results" aria-expanded="true" aria-autocomplete="list" data-search-input>
+        </form>
+        <p class="search-status" data-search-status></p>
+        <ol class="search-results" id="search-results" role="listbox" aria-label="Results" data-search-results></ol>
+    </section>
+</div>

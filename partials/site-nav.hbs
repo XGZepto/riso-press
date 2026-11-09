@@ -1,0 +1,34 @@
+<header class="nav wrap">
+    <a class="logo" href="{{@site.url}}">
+        {{#if @site.logo}}<img src="{{img_url @site.logo size="s"}}" alt="{{@site.title}}">{{else}}<span class="logo-text">{{@site.title}}</span>{{/if}}
+    </a>
+    {{#get "posts" limit="1" fields="published_at"}}
+        {{#foreach posts}}<span class="issue">No. {{../pagination.total}} · {{date format="MMM YYYY"}}</span>{{/foreach}}
+    {{/get}}
+    <nav class="navlinks" aria-label="Main">
+        {{navigation}}
+        <button class="pill nav-search" type="button" data-search aria-haspopup="dialog" aria-label="Search"><svg viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M20 20l-4.8-4.8"/></svg><span class="nav-search-t">Search</span></button>
+        {{#if @site.members_enabled}}
+            {{#if @member}}
+                <a class="pill" href="#/portal/account" data-portal="account">Account</a>
+            {{else}}
+                <a class="pill nav-signin" href="#/portal/signin" data-member="signin" aria-haspopup="dialog">Sign in</a>
+                {{> signup class="pill is-fill" label="Subscribe"}}
+            {{/if}}
+        {{/if}}
+        <button class="pill nav-menu" type="button" data-menu aria-expanded="false" aria-controls="site-menu" aria-label="Menu"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path class="m-open" d="M4 8h16M4 16h16"/><path class="m-close" d="M6 6l12 12M18 6L6 18"/></svg></button>
+    </nav>
+    {{!-- Below 980px the nav links move into this index, opened by the menu button. --}}
+    <nav class="menu" id="site-menu" data-menu-panel aria-label="Menu" hidden>
+        <ol class="menu-list" role="list">
+            {{#foreach @site.navigation}}<li><a href="{{this.url}}"><span class="menu-n" aria-hidden="true"></span><span data-detect-lang>{{label}}</span></a></li>{{/foreach}}
+            {{#if @site.members_enabled}}
+                {{#if @member}}
+                    <li><a href="#/portal/account" data-portal="account"><span class="menu-n" aria-hidden="true"></span>Account</a></li>
+                {{else}}
+                    <li><a href="#/portal/signin" data-member="signin" aria-haspopup="dialog"><span class="menu-n" aria-hidden="true"></span>Sign in</a></li>
+                {{/if}}
+            {{/if}}
+        </ol>
+    </nav>
+</header>
